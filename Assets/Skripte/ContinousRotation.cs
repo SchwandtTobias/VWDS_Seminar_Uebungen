@@ -18,8 +18,8 @@ public class ContinousRotation : MonoBehaviour
 	void Update () 
 	{
 		transform.rotation = Quaternion.Euler (
-			transform.rotation.eulerAngles.x + Mathf.Deg2Rad * m_AngleInDegreeX * Time.deltaTime,
-			transform.rotation.eulerAngles.y + Mathf.Deg2Rad * m_AngleInDegreeY * Time.deltaTime,
-			transform.rotation.eulerAngles.z + Mathf.Deg2Rad * m_AngleInDegreeZ * Time.deltaTime);
+			transform.rotation.eulerAngles.x + m_AngleInDegreeX * Time.deltaTime,
+			transform.rotation.eulerAngles.y + m_AngleInDegreeY * Time.deltaTime,
+			transform.rotation.eulerAngles.z + m_AngleInDegreeZ * Time.deltaTime);
 	}
 }
