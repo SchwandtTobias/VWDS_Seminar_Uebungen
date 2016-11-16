@@ -3,9 +3,6 @@ using System.Collections;
 
 public class CreateBoundingSphere : MonoBehaviour
 {
-
-    private Vector3 Mittelpunkt;
-
 	// Use this for initialization
 	void Start ()
     {
@@ -41,11 +38,21 @@ public class CreateBoundingSphere : MonoBehaviour
 
         Debug.Log(Mittelpunkt);
         Debug.Log(Radius);
+
+        AddBoundingSphereToObject(Mittelpunkt, Radius);
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
         
+    }
+
+    void AddBoundingSphereToObject(Vector3 _Center, float _Radius)
+    {
+        SphereCollider sc = gameObject.AddComponent<SphereCollider>();
+
+        sc.center = _Center;
+        sc.radius = _Radius;
     }
 }
