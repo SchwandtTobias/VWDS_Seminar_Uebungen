@@ -41,8 +41,12 @@ public class CreateAABB : MonoBehaviour
     {
         BoxCollider bc = gameObject.AddComponent<BoxCollider>();
 
-        Vector3 Center = (_Right - _Left) / 2 + _Left;
-        Vector3 Size   = new Vector3(5, 5, 5);
+        Vector3 Center = (_Right - _Left) / 2.0f + _Left;
+        Vector3 Size   = new Vector3(0.0f, 0.0f, 0.0f);
+
+		Size.x = (Center.x - _Left.x) * 2.0f;
+		Size.y = (Center.y - _Left.y) * 2.0f;
+		Size.z = (Center.z - _Left.z) * 2.0f;
 
         bc.center = Center;
         bc.size   = Size;

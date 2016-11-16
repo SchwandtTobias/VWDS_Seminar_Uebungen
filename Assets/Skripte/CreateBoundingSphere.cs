@@ -9,6 +9,8 @@ public class CreateBoundingSphere : MonoBehaviour
         Mesh Modell = GetComponent<MeshFilter>().mesh;
         Vector3[] Vertices = Modell.vertices;
 
+		if (Vertices.Length == 0) return;
+
         // -----------------------------------------------------------------------------
         // Mittelpunkt
         // -----------------------------------------------------------------------------
@@ -35,9 +37,6 @@ public class CreateBoundingSphere : MonoBehaviour
                 Radius = Distance;
             }
         }
-
-        Debug.Log(Mittelpunkt);
-        Debug.Log(Radius);
 
         AddBoundingSphereToObject(Mittelpunkt, Radius);
     }
