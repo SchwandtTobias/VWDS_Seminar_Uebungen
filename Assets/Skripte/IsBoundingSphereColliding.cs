@@ -4,23 +4,23 @@ using System.Collections;
 public class IsBoundingSphereColliding : MonoBehaviour 
 {
 	#region Aufgabe2_1
-	bool PruefeKollisionMitBoundingSphere(SphereCollider _Sphere1, SphereCollider _Sphere2)
+	bool PruefeKollisionMitBoundingSphere(BoundingSphere _Sphere1, BoundingSphere _Sphere2)
 	{
-		return false;
-	}
+		float AbstandMittelpunkte = Vector3.Distance (_Sphere1.Center, _Sphere2.Center);
 
-	bool PruefeKollisionMitAABB(SphereCollider _Sphere, BoxCollider _Box)
-	{
-		return false;
+		return AbstandMittelpunkte < (_Sphere1.Radius + _Sphere2.Radius);
 	}
 	#endregion
 
+	#region Given By Ur Master
 	public GameObject m_Other;
+
+	private BoundingSphere m_MySphereCollider;
 
 	// Use this for initialization
 	void Start () 
 	{
-		
+		m_MySphereCollider = gameObject.GetComponent<BoundingSphere> ();
 	}
 	
 	// Update is called once per frame
@@ -28,16 +28,13 @@ public class IsBoundingSphereColliding : MonoBehaviour
 	{
 		bool IsColliding = false;
 
-		SphereCollider Sphere = m_Other.GetComponents<SphereCollider> () [0];
+		BoundingSphere OtherSphere = m_Other.GetComponent<BoundingSphere> ();
+		AABB           OtherBox    = m_Other.GetComponent<AABB> ();
 
-		SphereCollider OtherSphere = m_Other.GetComponents<SphereCollider> () [0];
-		BoxCollider    OtherBox    = m_Other.GetComponents<BoxCollider> () [0];
-
-		if (OtherSphere != null) {
-			IsColliding = PruefeKollisionMitBoundingSphere (Sphere, OtherSphere);
-		}
-		else if (OtherBox != null) {
-			IsColliding = PruefeKollisionMitAABB (Sphere, OtherBox);
+		if (OtherSphere != null) 
+		{
+			IsColliding = PruefeKollisionMitBoundingSphere (m_MySphereCollider, OtherSphere);
 		}
 	}
+	#endregion
 }
