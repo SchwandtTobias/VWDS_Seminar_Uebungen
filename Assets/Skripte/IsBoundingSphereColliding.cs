@@ -3,18 +3,27 @@ using System.Collections;
 
 public class IsBoundingSphereColliding : MonoBehaviour 
 {
-	#region Aufgabe2_1
-	bool PruefeKollisionMitBoundingSphere(BoundingSphere _Sphere1, BoundingSphere _Sphere2)
+    #region Aufgabe2_1
+    public GameObject m_Other;
+
+    public ParticleSystem m_ParticleSystem;
+
+    bool PruefeKollisionMitBoundingSphere(BoundingSphere _Sphere1, BoundingSphere _Sphere2)
 	{
 		float AbstandMittelpunkte = Vector3.Distance (_Sphere1.Center, _Sphere2.Center);
 
 		return AbstandMittelpunkte < (_Sphere1.Radius + _Sphere2.Radius);
 	}
+
+    void OnCollision()
+    {
+        Destroy(m_Other);
+
+        m_ParticleSystem.Play();
+    }
 	#endregion
 
 	#region Given By Ur Master
-	public GameObject m_Other;
-
 	private BoundingSphere m_MySphereCollider;
 
 	// Use this for initialization
@@ -28,6 +37,11 @@ public class IsBoundingSphereColliding : MonoBehaviour
 	{
 		bool IsColliding = false;
 
+        if (m_Other == null)
+        {
+            return;
+        }
+
 		BoundingSphere OtherSphere = m_Other.GetComponent<BoundingSphere> ();
 		AABB           OtherBox    = m_Other.GetComponent<AABB> ();
 
@@ -35,6 +49,11 @@ public class IsBoundingSphereColliding : MonoBehaviour
 		{
 			IsColliding = PruefeKollisionMitBoundingSphere (m_MySphereCollider, OtherSphere);
 		}
+
+        if (IsColliding)
+        {
+            OnCollision();
+        }
 	}
 	#endregion
 }

@@ -20,9 +20,9 @@ public class AABB : MonoBehaviour
 			RechtsOben.y = Mathf.Max(_Vertices[IndexOfVertex].y, RechtsOben.y);
 			RechtsOben.z = Mathf.Max(_Vertices[IndexOfVertex].z, RechtsOben.z);
 		}
-			
-		Left  = LinksUnten;
-		Right = RechtsOben;
+
+        m_Left  = LinksUnten;
+        m_Right = RechtsOben;
 	}
 
 	#endregion
@@ -31,8 +31,10 @@ public class AABB : MonoBehaviour
 	public Vector3 Left  { get; set; }
 	public Vector3 Right { get; set; }
 
-	private Vector3 m_Center;
-	private Vector3 m_Size;
+    private Vector3 m_Left = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 m_Right = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 m_Center = new Vector3(0.0f, 0.0f, 0.0f);
+	private Vector3 m_Size = new Vector3(0.0f, 0.0f, 0.0f);
 
     // Use this for initialization
     void Start()
@@ -41,23 +43,29 @@ public class AABB : MonoBehaviour
         Vector3[] Vertices = Modell.vertices;
 
         if (Vertices.Length == 0) return;
+        
+        ErstelleAABBAusModellpunkten (Vertices);
 
-		ErstelleAABBAusModellpunkten (Vertices);
+        if (Vector3.Distance(m_Left, m_Right) > 0)
+        {
+            UpdateComponent();
+        }
+    }
 
-		UpdateComponent();
+    void Update()
+    {
+        Left  = m_Left  + transform.position;
+        Right = m_Right + transform.position;
     }
 
 	public void UpdateComponent()
 	{
-		m_Center = (Right - Left) / 2.0f + Left;
+		m_Center = (m_Right - m_Left) / 2.0f + m_Left;
 		m_Size   = new Vector3(0.0f, 0.0f, 0.0f);
 
-		m_Size.x = (m_Center.x - Left.x) * 2.0f;
-		m_Size.y = (m_Center.y - Left.y) * 2.0f;
-		m_Size.z = (m_Center.z - Left.z) * 2.0f;
-
-		Left   = Left  + transform.position;
-		Right  = Right + transform.position;
+		m_Size.x = (m_Center.x - m_Left.x) * 2.0f;
+		m_Size.y = (m_Center.y - m_Left.y) * 2.0f;
+		m_Size.z = (m_Center.z - m_Left.z) * 2.0f;
 
 		// --------------
 

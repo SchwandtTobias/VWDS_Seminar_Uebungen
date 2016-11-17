@@ -33,9 +33,9 @@ public class BoundingSphere : MonoBehaviour
 				Abstand = Distance;
 			}
 		}
-			
-		Center = Mittelpunkt;
-		Radius = Abstand;
+
+        m_Center = Mittelpunkt;
+		m_Radius = Abstand;
 	}
 
 	#endregion
@@ -45,8 +45,11 @@ public class BoundingSphere : MonoBehaviour
 	public Vector3 Center { get; set; }
 	public float Radius { get; set; }
 
-	// Use this for initialization
-	void Start()
+    Vector3 m_Center = new Vector3(0.0f, 0.0f, 0.0f);
+    float m_Radius = 0.0f;
+
+    // Use this for initialization
+    void Start()
 	{
 		Mesh Modell = GetComponent<MeshFilter>().mesh;
 		Vector3[] Vertices = Modell.vertices;
@@ -55,8 +58,17 @@ public class BoundingSphere : MonoBehaviour
 
 		ErstelleBoundingSphereAusModellpunkten (Vertices);
 
-		UpdateComponent();
+        if (m_Radius > 0)
+        {
+            UpdateComponent();
+        }
 	}
+
+    void Update()
+    {
+        Center = m_Center + transform.position;
+        Radius = m_Radius;
+    }
 
 	public void UpdateComponent()
 	{
@@ -67,12 +79,8 @@ public class BoundingSphere : MonoBehaviour
 			sc = gameObject.AddComponent<SphereCollider>();
 		}
 
-		sc.center = Center;
-		sc.radius = Radius;
-
-		// --------------
-
-		Center = Center + transform.position;
+		sc.center = m_Center;
+		sc.radius = m_Radius;
 	}
 	#endregion
 }
