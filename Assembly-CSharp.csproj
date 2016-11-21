@@ -47,10 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\Skripte\AABB.cs" />
      <Compile Include="Assets\Skripte\BoundingSphere.cs" />
-     <Compile Include="Assets\Skripte\ContinousRotation.cs" />
      <Compile Include="Assets\Skripte\IsAABBColliding.cs" />
      <Compile Include="Assets\Skripte\IsBoundingSphereColliding.cs" />
-     <Compile Include="Assets\Skripte\MoveWaypoints.cs" />
+     <Compile Include="Assets\Skripte\Other\MoveWaypoints.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
