@@ -10,9 +10,9 @@ public class IsBoundingSphereColliding : MonoBehaviour
 
     bool PruefeKollisionMitBoundingSphere(BoundingSphere _Sphere1, BoundingSphere _Sphere2)
 	{
-		float AbstandMittelpunkte = Vector3.Distance (_Sphere1.Center, _Sphere2.Center);
+		// Hier die Kollision berechnen...
 
-		return AbstandMittelpunkte < (_Sphere1.Radius + _Sphere2.Radius);
+		return false;
 	}
 
     void OnCollision()

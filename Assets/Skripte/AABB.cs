@@ -10,16 +10,7 @@ public class AABB : MonoBehaviour
 		Vector3 LinksUnten = _Vertices[0];
 		Vector3 RechtsOben = _Vertices[0];
 
-		for (int IndexOfVertex = 0; IndexOfVertex < _Vertices.Length; ++IndexOfVertex)
-		{
-			LinksUnten.x = Mathf.Min(_Vertices[IndexOfVertex].x, LinksUnten.x);
-			LinksUnten.y = Mathf.Min(_Vertices[IndexOfVertex].y, LinksUnten.y);
-			LinksUnten.z = Mathf.Min(_Vertices[IndexOfVertex].z, LinksUnten.z);
-
-			RechtsOben.x = Mathf.Max(_Vertices[IndexOfVertex].x, RechtsOben.x);
-			RechtsOben.y = Mathf.Max(_Vertices[IndexOfVertex].y, RechtsOben.y);
-			RechtsOben.z = Mathf.Max(_Vertices[IndexOfVertex].z, RechtsOben.z);
-		}
+		// Hier die Punkte berechnen...
 
         m_Left  = LinksUnten;
         m_Right = RechtsOben;
