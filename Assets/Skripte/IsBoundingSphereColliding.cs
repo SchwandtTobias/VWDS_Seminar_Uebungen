@@ -43,7 +43,6 @@ public class IsBoundingSphereColliding : MonoBehaviour
         }
 
 		BoundingSphere OtherSphere = m_Other.GetComponent<BoundingSphere> ();
-		AABB           OtherBox    = m_Other.GetComponent<AABB> ();
 
 		if (OtherSphere != null) 
 		{

@@ -37,7 +37,7 @@ public class AABB : MonoBehaviour
         
         ErstelleAABBAusModellpunkten (Vertices);
 
-        if (Vector3.Distance(m_Left, m_Right) > 0)
+        if (Vector3.Distance(m_Min, m_Max) > 0)
         {
             UpdateComponent();
         }
@@ -46,12 +46,12 @@ public class AABB : MonoBehaviour
     void Update()
     {
         Min = m_Min + transform.position;
-        Rax = m_Max + transform.position;
+        Max = m_Max + transform.position;
     }
 
 	public void UpdateComponent()
 	{
-		m_Center = (m_Max - m_Min) / 2.0f + m_Left;
+		m_Center = (m_Max - m_Min) / 2.0f + m_Min;
 		m_Size   = new Vector3(0.0f, 0.0f, 0.0f);
 
 		m_Size.x = (m_Center.x - m_Min.x) * 2.0f;
