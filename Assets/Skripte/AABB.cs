@@ -7,23 +7,23 @@ public class AABB : MonoBehaviour
 
 	void ErstelleAABBAusModellpunkten(Vector3[] _Vertices)
 	{
-		Vector3 LinksUnten = _Vertices[0];
-		Vector3 RechtsOben = _Vertices[0];
+		Vector3 Min = _Vertices[0];
+		Vector3 Max = _Vertices[0];
 
 		// Hier die Punkte berechnen...
 
-        m_Left  = LinksUnten;
-        m_Right = RechtsOben;
+		m_Min = Min;
+		m_Max = Max;
 	}
 
 	#endregion
 
 	#region Given By Ur Master
-	public Vector3 Left  { get; set; }
-	public Vector3 Right { get; set; }
+	public Vector3 Min  { get; set; }
+	public Vector3 Max  { get; set; }
 
-    private Vector3 m_Left = new Vector3(0.0f, 0.0f, 0.0f);
-    private Vector3 m_Right = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 m_Min = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 m_Max = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 m_Center = new Vector3(0.0f, 0.0f, 0.0f);
 	private Vector3 m_Size = new Vector3(0.0f, 0.0f, 0.0f);
 
@@ -45,18 +45,18 @@ public class AABB : MonoBehaviour
 
     void Update()
     {
-        Left  = m_Left  + transform.position;
-        Right = m_Right + transform.position;
+        Min = m_Min + transform.position;
+        Rax = m_Max + transform.position;
     }
 
 	public void UpdateComponent()
 	{
-		m_Center = (m_Right - m_Left) / 2.0f + m_Left;
+		m_Center = (m_Max - m_Min) / 2.0f + m_Left;
 		m_Size   = new Vector3(0.0f, 0.0f, 0.0f);
 
-		m_Size.x = (m_Center.x - m_Left.x) * 2.0f;
-		m_Size.y = (m_Center.y - m_Left.y) * 2.0f;
-		m_Size.z = (m_Center.z - m_Left.z) * 2.0f;
+		m_Size.x = (m_Center.x - m_Min.x) * 2.0f;
+		m_Size.y = (m_Center.y - m_Min.y) * 2.0f;
+		m_Size.z = (m_Center.z - m_Min.z) * 2.0f;
 
 		// --------------
 

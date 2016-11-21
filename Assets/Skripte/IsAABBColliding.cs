@@ -9,7 +9,7 @@ public class IsAABBColliding : MonoBehaviour
 
     private float m_Time = 0;
 
-    bool PruefeKollisionMitAABB(AABB _Sphere1, AABB _Sphere2)
+	bool PruefeKollisionMitAABB(AABB _AABB1, AABB _AABB2)
     {
 		// Hier die Kollision berechnen...
 
