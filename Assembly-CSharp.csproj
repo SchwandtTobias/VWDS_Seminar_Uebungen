@@ -47,10 +47,17 @@
   <ItemGroup>
      <Compile Include="Assets\Skripte\AABB.cs" />
      <Compile Include="Assets\Skripte\BoundingSphere.cs" />
+     <Compile Include="Assets\Skripte\Camera\CameraFollowPlayer.cs" />
+     <Compile Include="Assets\Skripte\Character\CharacterAbbilities.cs" />
+     <Compile Include="Assets\Skripte\Character\CharacterMovement.cs" />
      <Compile Include="Assets\Skripte\ContinousRotation.cs" />
      <Compile Include="Assets\Skripte\IsAABBColliding.cs" />
      <Compile Include="Assets\Skripte\IsBoundingSphereColliding.cs" />
      <Compile Include="Assets\Skripte\MoveWaypoints.cs" />
+     <Compile Include="Assets\Skripte\Obstacles\FireBlock.cs" />
+     <Compile Include="Assets\Skripte\Obstacles\GeneralBlock.cs" />
+     <Compile Include="Assets\Skripte\Obstacles\NormalBlock.cs" />
+     <Compile Include="Assets\Skripte\UI\AbbilitiesInterface.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
