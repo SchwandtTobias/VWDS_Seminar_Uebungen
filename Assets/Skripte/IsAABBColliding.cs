@@ -9,16 +9,11 @@ public class IsAABBColliding : MonoBehaviour
 
     private float m_Time = 0;
 
-    bool PruefeKollisionMitAABB(AABB _Sphere1, AABB _Sphere2)
+	bool PruefeKollisionMitAABB(AABB _AABB1, AABB _AABB2)
     {
-        return !(
-            _Sphere1.Left.x  >= _Sphere2.Right.x   ||
-            _Sphere1.Left.y  >= _Sphere2.Right.y   ||
-            _Sphere1.Left.z  >= _Sphere2.Right.z   ||
-            _Sphere1.Right.x <= _Sphere2.Left.x    ||
-            _Sphere1.Right.y <= _Sphere2.Left.y    ||
-            _Sphere1.Right.z <= _Sphere2.Left.z
-        );
+		// Hier die Kollision berechnen...
+
+		return false;
     }
     
     void OnCollision()

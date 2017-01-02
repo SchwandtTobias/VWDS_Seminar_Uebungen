@@ -58,6 +58,7 @@
      <Compile Include="Assets\Skripte\Obstacles\GeneralBlock.cs" />
      <Compile Include="Assets\Skripte\Obstacles\NormalBlock.cs" />
      <Compile Include="Assets\Skripte\UI\AbbilitiesInterface.cs" />
+     <Compile Include="Assets\Skripte\Other\MoveWaypoints.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

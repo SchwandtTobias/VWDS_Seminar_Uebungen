@@ -7,32 +7,10 @@ public class BoundingSphere : MonoBehaviour
 
 	void ErstelleBoundingSphereAusModellpunkten(Vector3[] _Vertices)
 	{
-		// -----------------------------------------------------------------------------
-		// Mittelpunkt
-		// -----------------------------------------------------------------------------
 		Vector3 Mittelpunkt = new Vector3(0, 0, 0);
+		float   Abstand     = 0.0f;
 
-		for (int IndexOfVertex = 0; IndexOfVertex < _Vertices.Length; ++IndexOfVertex)
-		{
-			Mittelpunkt += _Vertices[IndexOfVertex];
-		}
-
-		Mittelpunkt = Mittelpunkt / _Vertices.Length;
-
-		// -----------------------------------------------------------------------------
-		// Radius
-		// -----------------------------------------------------------------------------
-		float Abstand = 0.0f;
-
-		for (int IndexOfVertex = 0; IndexOfVertex < _Vertices.Length; ++IndexOfVertex)
-		{
-			float Distance = Vector3.Distance(Mittelpunkt, _Vertices[IndexOfVertex]);
-
-			if (Distance > Abstand)
-			{
-				Abstand = Distance;
-			}
-		}
+		// Hier den Punkt und Radius berechnen...
 
         m_Center = Mittelpunkt;
 		m_Radius = Abstand;
