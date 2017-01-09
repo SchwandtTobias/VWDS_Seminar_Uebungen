@@ -4,11 +4,14 @@ using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class EnemyController : MonoBehaviour
 { 
     public float m_Speed = 4.0f;
 
     public List<GameObject> m_Waypoints;
+
+    public Color[] m_EnemyStateColors = new Color[3] { Color.white, Color.white, Color.white };
 
     public enum EStates
     {
@@ -28,6 +31,8 @@ public class EnemyController : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D m_Rigidbody;
 
+    private SpriteRenderer m_Renderer;
+
     // Use this for initialization
     void Start()
     {
@@ -41,10 +46,14 @@ public class EnemyController : MonoBehaviour
         m_CurrentState = EStates.Patrol;
 
         m_Rigidbody = GetComponent<Rigidbody2D>();
+
+        m_Renderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        m_Renderer.color = m_EnemyStateColors[(int)m_CurrentState];
+
         m_States[(int)m_CurrentState].UpdateState();
     }
 
